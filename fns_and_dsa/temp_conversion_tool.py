@@ -1,6 +1,6 @@
 # Global Conversion Factors
-FAHRENHEIT_TO_CELSIUS_FACTOR = 5/9  # 0.555...
-CELSIUS_TO_FAHRENHEIT_FACTOR = 9/5   # 1.8
+FAHRENHEIT_TO_CELSIUS_FACTOR = 5 / 9  # Conversion factor from Fahrenheit to Celsius
+CELSIUS_TO_FAHRENHEIT_FACTOR = 9 / 5   # Conversion factor from Celsius to Fahrenheit
 
 def convert_to_celsius(fahrenheit):
     """Convert Fahrenheit to Celsius"""
@@ -24,7 +24,7 @@ def main():
                 print("Goodbye!")
                 break
                 
-            temperature = float(temp_input)
+            temperature = float(temp_input)  # Convert input to float
             
             # Get unit and validate
             while True:
@@ -42,12 +42,7 @@ def main():
                 print(f"\n{temperature}°F = {converted:.2f}°C\n")
                 
         except ValueError:
-            print("Error: Please enter a valid number for temperature.")
-        except KeyboardInterrupt:
-            print("\nOperation cancelled by user.")
-            break
-        except Exception as e:
-            print(f"An unexpected error occurred: {e}")
+            print("Error: Please enter a valid number for temperature.")  # Handle ValueError
 
 if __name__ == "__main__":
     main()
