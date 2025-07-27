@@ -18,10 +18,10 @@ def main():
 
     if unit == 'F':
         celsius = convert_to_celsius(temp_input)
-        print(f"{temp_input}°F is {celsius}°C")
+        print(f"{temp_input:.1f}°F is {celsius}°C")
     elif unit == 'C':
         fahrenheit = convert_to_fahrenheit(temp_input)
-        print(f"{temp_input}°C is {fahrenheit}°F")
+        print(f"{temp_input:.1f}°C is {fahrenheit}°F")
     else:
         print("Invalid temperature unit. Please enter 'C' or 'F'.")
 
