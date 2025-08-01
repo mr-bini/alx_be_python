@@ -5,7 +5,7 @@ def main():
     account = BankAccount(100)  # Example starting balance
 
     if len(sys.argv) < 2:
-        print("Usage: python main-0.py <command>:<amount>")
+        print("Usage: python main.py <command>:<amount>")
         print("Commands: deposit, withdraw, display")
         sys.exit(1)
 
@@ -13,10 +13,9 @@ def main():
 
     command = parts[0].lower()
 
-    # Handle deposit and withdraw commands with amount
     if command in ("deposit", "withdraw"):
         if len(parts) != 2:
-            print(f"Usage: python main-0.py {command}:<amount>")
+            print(f"Usage: python main.py {command}:<amount>")
             sys.exit(1)
 
         try:
@@ -27,10 +26,10 @@ def main():
 
         if command == "deposit":
             account.deposit(amount)
-            print(f"Deposited: ${amount}")
+            print(f"Deposited: ${amount:.2f}")
         elif command == "withdraw":
             if account.withdraw(amount):
-                print(f"Withdrew: ${amount}")
+                print(f"Withdrew: ${amount:.2f}")
             else:
                 print("Insufficient funds.")
 
