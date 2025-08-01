@@ -14,7 +14,8 @@ class BankAccount:
         return False
 
     def display_balance(self):
-        print(f"Current balance: ${self.balance:.2f}")
+        # Ensure the balance is always displayed with two decimal places
+        print(f"Current Balance: ${self.balance:.2f}")
 
 def main():
     account = BankAccount(100)  # Example starting balance
