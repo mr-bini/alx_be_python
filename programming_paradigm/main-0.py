@@ -1,41 +1,41 @@
 import sys
-from bank_account import BankAccount
+
+class BankAccount:
+    def __init__(self, initial_balance):
+        self.balance = initial_balance
+
+    def deposit(self, amount):
+        self.balance += amount
+
+    def withdraw(self, amount):
+        if amount <= self.balance:
+            self.balance -= amount
+            return True
+        return False
+
+    def display_balance(self):
+        print(f"Current balance: ${self.balance:.2f}")
 
 def main():
     account = BankAccount(100)  # Example starting balance
-
     if len(sys.argv) < 2:
         print("Usage: python main.py <command>:<amount>")
         print("Commands: deposit, withdraw, display")
         sys.exit(1)
 
-    parts = sys.argv[1].split(':')
+    command, *params = sys.argv[1].split(':')
+    amount = float(params[0]) if params else None
 
-    command = parts[0].lower()
-
-    if command in ("deposit", "withdraw"):
-        if len(parts) != 2:
-            print(f"Usage: python main.py {command}:<amount>")
-            sys.exit(1)
-
-        try:
-            amount = float(parts[1])
-        except ValueError:
-            print("Amount must be a number.")
-            sys.exit(1)
-
-        if command == "deposit":
-            account.deposit(amount)
-            print(f"Deposited: ${amount:.2f}")
-        elif command == "withdraw":
-            if account.withdraw(amount):
-                print(f"Withdrew: ${amount:.2f}")
-            else:
-                print("Insufficient funds.")
-
+    if command == "deposit" and amount is not None:
+        account.deposit(amount)
+        print(f"Deposited: ${amount:.2f}")
+    elif command == "withdraw" and amount is not None:
+        if account.withdraw(amount):
+            print(f"Withdrew: ${amount:.2f}")
+        else:
+            print("Insufficient funds.")
     elif command == "display":
         account.display_balance()
-
     else:
         print("Invalid command.")
 
